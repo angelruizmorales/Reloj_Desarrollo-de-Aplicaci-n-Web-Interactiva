@@ -24,7 +24,8 @@
             
                 <div class="botonesPrincipal">
                     <button onclick="MostrarAlarma()" type="button" class="btn btn-primary">Alarma</button>
-                    <button type="button"  id='color'class="btn btn-primary">Modo oscuro</button>
+                    <button onclick="MostrarCrono()" type="button" class="btn btn-primary">Cronómetro</button>
+                    <button type="button"  id='color'class="btn btn-primary">Fondo</button>
 
                 </div>
             </div>
@@ -50,14 +51,15 @@
                         <div class="controls">
                             <button type="submit" class="set-alarm">Poner Alarma</button>
                             <button type="reset" onclick="clearAlarm()" class="clear-alarm">Para alarma</button>
+                            <button onclick="volverInicioAlarma()" class="">Inicio</button>
                         </div>
                     </form> 
                 </section>
-                <hr style="margin-top: 20px">
+                
             
                 <section>
                     <div>
-                        <h3 class="alarm-heading" style="margin-top: -20px;">Alarmas pendientes</h3>
+                        <h3 class="alarm-heading" style=" margin-top: -20px;">Alarmas pendientes</h3>
                     </div>
                     <div>
                         <ul id = "myList">
@@ -69,6 +71,41 @@
 
             </div>
 
+
+        </div>
+
+        <div id="cronometroVista">
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="display-4 text-center">Cronómetro</h3>
+                            <div class="cronometro">
+                                <div class="containerTime d-flex justify-content-center">
+                                    <h2 id="horas" class="display-2">00</h2>
+                                    <h2 id="minutos" class="display-2">:00</h2>
+                                    <h2 id="segundos" class="display-2">:00</h2>
+                                    <h2 id="centesimas" class="display-2">:00</h2>
+                                </div><!--containerTime-->
+    
+                                <div class="containerButtons d-flex justify-content-around">
+                                    <button id="start" class="btn boton">Inicio</button>
+                                    <button id="btnReset" class="btn btn-primary">Reiniciar</button>
+                                    <button id="btnHistory" class="btn btn-warning">Vuelta</button>
+                                </div><!--containerButtons-->
+                                <div class="contenedorInicio">
+                                <button onclick="volverInicioCronometro()" id="btnInicio" class="btn inicio">Inicio</button>
+                            </div>
+                            </div><!--cronometro-->
+                        </div><!--col-6-->
+    
+                        <div class="col-12">
+                            <h3 class="espaciadoArriba">Vueltas</h3>
+                            <h5 id="history" class="text-center espacioarriba"></h5>
+                        </div><!--col-6-->
+                    </div><!--row-->
+                </div><!--container-->
+            </section>
 
         </div>
 

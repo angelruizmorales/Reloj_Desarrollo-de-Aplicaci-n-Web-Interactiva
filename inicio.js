@@ -1,5 +1,6 @@
 $(document).ready(function() {         
     $('#alarmaVista').hide();
+    $('#cronometroVista').hide();
     
 });
 const date = document.getElementById("date"),
@@ -35,18 +36,30 @@ getCurrentDate()
     
 }
 
+function volverInicioCronometro(){
+    $('#cronometroVista').hide();
+    $('#relojPrincipal').show();
+    
+}
+function volverInicioAlarma(){
+    $('#alarmaVista').hide();
+    $('#relojPrincipal').show();
+    
+}
+
+
+function MostrarCrono(){
+    $('#relojPrincipal').hide();
+    $('#cronometroVista').show();
+    
+}
+
+
 function MostrarRegistrarse(){
     $('#logInVista').hide();
     $('#singUpVista').show();
     // alert("SE HA MOSTRADO");
 }
-
-
-
-
-
-
-
 
 const display = document.getElementById('clock');
 
@@ -136,7 +149,7 @@ remove = (value) => {
 // Adds newAlarm to the unordered list as a new list item on webpage
 function showNewAlarm(newAlarm){
     const html =`
-    <li class = "time-list">        
+    <li class = "time-list" >        
         <span class="time">${newAlarm}</span>
         <button class="deleteAlarm time-control" id="delete-button" onclick = "remove(this.value)" value=${newAlarm}>Delete Alarm</button>       
     </li>`
@@ -189,3 +202,89 @@ const body = document.querySelector('body');
 color.addEventListener('click', e=>{body.classList.toggle('darkmode')});
 
 
+//____________________Chronometer______________________
+var hundredths = 0;
+var seconds = 0;
+var minutes = 0;
+var hours = 0;
+
+var start = document.getElementById('start');
+var btnReset = document.getElementById('btnReset');
+var btnHistory = document.getElementById('btnHistory');
+
+var hundredthsHTML = document.getElementById('centesimas');
+var secondsHTML = document.getElementById('segundos');
+var minutesHTML = document.getElementById('minutos');
+var hoursHTML = document.getElementById('horas');
+var exe = setInterval("");
+var power = false;
+
+function cronometro() {
+	if(hundredths < 99) {
+	   hundredths++;
+		hundredths = ((hundredths < 10) ? "0" : "") + hundredths;
+		hundredthsHTML.innerHTML = ":" + hundredths;
+	}
+	
+	if (hundredths == 99) { hundredths = -1; }
+	
+	if (hundredths == 0) {
+		seconds++;
+		seconds = ((seconds < 10) ? "0" : "") + seconds;
+		secondsHTML.innerHTML = ":" + seconds;
+	}
+	
+	if (seconds == 59) { seconds = -1; }
+	
+	if (seconds == 0 && hundredths == 0) {
+		minutes++;
+		minutes = ((minutes < 10) ? "0" : "" ) + minutes;
+		minutesHTML.innerHTML = ":" + minutes;
+	}
+	
+	if ( minutes == 59) { minutes = -1; }
+	
+	if ( minutes == 0 && seconds == 0 && hundredths == 0 ) { 
+		hours++;
+		hours = ((hours < 10) ? "0" : "") + hours;
+		hoursHTML.innerHTML = hours;
+	}
+}
+
+function reset() {
+	clearInterval(exe);
+	hundredths = 0;
+	seconds = 0;
+	minutes = 0;
+	hours = 0;
+	
+	hundredthsHTML.innerHTML = ":00";
+	secondsHTML.innerHTML = ":00";
+	minutesHTML.innerHTML = ":00";
+	hoursHTML.innerHTML = "00";
+	
+	document.getElementById('history').innerHTML = " ";
+}
+
+document.getElementById('start').addEventListener("click", function() {
+		
+	if( power == false ){
+		exe = setInterval(cronometro, 10);
+		start.style.backgroundColor = "red";
+		document.getElementById('start').innerHTML = "Parar";
+		power = true;
+	}
+	else {
+		clearInterval(exe);
+		start.style.backgroundColor = "green";
+		document.getElementById('start').innerHTML = "Inicio";
+		power = false;
+	}
+});
+
+function history() {
+	document.getElementById('history').innerHTML += "0" + hours + ":0" + minutes + ":" + seconds + ":" + hundredths + '<br>';
+}
+
+document.getElementById('btnHistory').addEventListener('click', history);
+document.getElementById('btnReset').addEventListener('click', reset);

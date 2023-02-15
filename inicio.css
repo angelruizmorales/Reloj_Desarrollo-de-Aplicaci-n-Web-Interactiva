@@ -34,6 +34,23 @@
   }
 
 
+.botonesPrincipal{
+ 
+  text-align: center;
+}
+.espaciadoBotones{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.espaciadoArriba{
+  padding-top: 5%;
+}
+
+
+.alarmaVista{
+
+}
 
   
 body{
@@ -150,3 +167,75 @@ body.darkmode{
   color: white
 }
 
+.contenedorInicio{
+  padding-top: 5%;
+}
+
+.inicio{
+  
+  background-color: rgb(76, 162, 211);
+  border: none;
+  color: white;
+  
+  
+
+}
+
+.espacioarriba{
+  padding-top: 5%;
+}
+
+section {
+	margin: 50px 50px;
+	color: #fff;
+}
+
+.boton {
+	background-color: green;
+	color: #fff;
+}
+
+#sono {
+    background-color: lightblue;
+    text-align:center;
+    padding:10px;
+}
+
+.reloj {
+     font-family: 'Chakra Petch';
+  font-size: 70px;
+  background-color: #010203;
+  color: #ffff;
+  padding: 40px 0;
+  border-radius: 10px;
+  border: 10px solid rgb(238, 189, 27);
+  box-shadow: inset 0px 0px 19px 5px #6b5a0f;
+}
+
+.topcontainer {
+	width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.top {
+  background-color: rgb(238, 189, 27);
+  width: 100px;
+  height: 15px;
+  border-radius: 5px 5px 0 0;
+  box-shadow: inset -9px -7px 15px #6b5a0f;
+}
+
+.cronometro {
+	
+	text-align: center;
+	
+}
+
+
+#mensaje {
+  text-align: center;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #f1591c;
+}
